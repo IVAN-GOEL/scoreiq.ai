@@ -1,0 +1,27 @@
+<svg viewBox="0 0 400 400" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes glow { 0%,100%{filter:drop-shadow(0 0 8px #a060ffaa)} 50%{filter:drop-shadow(0 0 18px #a060ffcc)} }
+    @keyframes fadein { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .score-text { animation: fadein 0.5s 0.1s both; opacity:0; }
+    .iq-text { animation: fadein 0.5s 0.2s both; opacity:0; animation: fadein 0.5s 0.2s both, glow 2.5s 0.7s ease-in-out infinite; }
+  </style>
+
+  <rect width="400" height="400" fill="#0a0b14" rx="0"/>
+
+  <!-- Centered text block — Score + IQ as one continuous word -->
+  <text
+    x="200"
+    y="234"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="80"
+    font-weight="900"
+    text-anchor="middle"
+    letter-spacing="-2"
+  >
+    <tspan class="score-text" fill="#ffffff">Score</tspan><tspan class="iq-text" fill="#a060ff">IQ</tspan>
+  </text>
+
+  <!-- Underline -->
+  <rect x="80" y="248" width="240" height="4" rx="2" fill="#a060ff" opacity="0.35"/>
+  <rect x="200" y="248" width="120" height="4" rx="2" fill="#a060ff" opacity="0.9"/>
+</svg>
