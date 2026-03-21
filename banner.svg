@@ -1,0 +1,149 @@
+<svg width="100%" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08080f"/>
+      <stop offset="100%" stop-color="#120830"/>
+    </linearGradient>
+    <linearGradient id="purp" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3cdc"/>
+      <stop offset="100%" stop-color="#a060ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <style>
+      @keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+      @keyframes slide { from{transform:translateX(-60px);opacity:0} to{transform:translateX(0);opacity:1} }
+      @keyframes fadein { from{opacity:0} to{opacity:1} }
+      @keyframes dash { to{stroke-dashoffset:-40} }
+      @keyframes scoreup { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+      @keyframes orbit { from{transform:rotate(0deg) translateX(38px) rotate(0deg)} to{transform:rotate(360deg) translateX(38px) rotate(-360deg)} }
+      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+      @keyframes barfill { from{width:0} to{width:var(--w)} }
+
+      .logo-s { animation: slide 0.8s ease forwards; }
+      .logo-iq { animation: slide 0.8s 0.2s ease both; opacity:0; }
+      .tagline { animation: fadein 1.2s 0.6s ease both; opacity:0; }
+      .stat1 { animation: fadein 1s 0.4s ease both; opacity:0; }
+      .stat2 { animation: fadein 1s 0.7s ease both; opacity:0; }
+      .stat3 { animation: fadein 1s 1.0s ease both; opacity:0; }
+      .stat4 { animation: fadein 1s 1.3s ease both; opacity:0; }
+      .orb1 { animation: pulse 2.5s infinite; }
+      .orb2 { animation: pulse 3.2s 0.8s infinite; }
+      .flow-line { stroke-dasharray:6 4; animation: dash 1.2s linear infinite; }
+      .bar1 { animation: barfill 1.4s 1.2s ease both; --w:180px; width:0; }
+      .bar2 { animation: barfill 1.4s 1.5s ease both; --w:140px; width:0; }
+      .bar3 { animation: barfill 1.4s 1.8s ease both; --w:110px; width:0; }
+      .dot { animation: blink 1.8s infinite; }
+      .float1 { animation: float 3s ease-in-out infinite; }
+      .float2 { animation: float 3.5s 0.5s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="280" fill="url(#bg)" rx="12"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.04" stroke="#a060ff" stroke-width="0.5">
+    <line x1="0" y1="56" x2="900" y2="56"/>
+    <line x1="0" y1="112" x2="900" y2="112"/>
+    <line x1="0" y1="168" x2="900" y2="168"/>
+    <line x1="0" y1="224" x2="900" y2="224"/>
+    <line x1="180" y1="0" x2="180" y2="280"/>
+    <line x1="360" y1="0" x2="360" y2="280"/>
+    <line x1="540" y1="0" x2="540" y2="280"/>
+    <line x1="720" y1="0" x2="720" y2="280"/>
+  </g>
+
+  <!-- Glowing orbs -->
+  <circle class="orb1" cx="80" cy="60" r="90" fill="#7c3cdc" opacity="0.06"/>
+  <circle class="orb2" cx="820" cy="220" r="80" fill="#a060ff" opacity="0.07"/>
+
+  <!-- Left: Logo + tagline -->
+  <g class="logo-s">
+    <text x="50" y="100" font-family="monospace" font-size="62" font-weight="900" fill="#f0ebff">Score</text>
+  </g>
+  <g class="logo-iq">
+    <text x="280" y="100" font-family="monospace" font-size="62" font-weight="900" fill="url(#purp)" filter="url(#glow)">IQ</text>
+  </g>
+
+  <g class="tagline">
+    <rect x="50" y="114" width="4" height="22" fill="#a060ff" rx="2"/>
+    <text x="62" y="131" font-family="monospace" font-size="14" fill="#8a7aaa">Alternative Credit Intelligence for India</text>
+    <!-- Live badge -->
+    <circle class="dot" cx="62" cy="152" r="4" fill="#22d38a"/>
+    <text x="72" y="157" font-family="monospace" font-size="12" fill="#22d38a">LIVE</text>
+    <rect x="105" y="144" width="1" height="18" fill="#3a2a5a"/>
+    <text x="112" y="157" font-family="monospace" font-size="12" fill="#6a5a8a">scoreiqv2web.vercel.app</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="370" y1="30" x2="370" y2="250" stroke="#2a1a4a" stroke-width="1"/>
+
+  <!-- Center: Animated score bars -->
+  <g class="float1">
+    <text x="405" y="60" font-family="monospace" font-size="12" fill="#6a5a8a">SCORE SIGNALS</text>
+
+    <!-- Bar 1 -->
+    <text x="405" y="90" font-family="monospace" font-size="11" fill="#8a7aaa">Income ratio</text>
+    <rect x="405" y="96" width="200" height="10" rx="5" fill="#1a0a30"/>
+    <rect class="bar1" x="405" y="96" height="10" rx="5" fill="url(#purp)"/>
+
+    <!-- Bar 2 -->
+    <text x="405" y="124" font-family="monospace" font-size="11" fill="#8a7aaa">Asset strength</text>
+    <rect x="405" y="130" width="200" height="10" rx="5" fill="#1a0a30"/>
+    <rect class="bar2" x="405" y="130" height="10" rx="5" fill="url(#purp)"/>
+
+    <!-- Bar 3 -->
+    <text x="405" y="158" font-family="monospace" font-size="11" fill="#8a7aaa">Debt burden</text>
+    <rect x="405" y="164" width="200" height="10" rx="5" fill="#1a0a30"/>
+    <rect class="bar3" x="405" y="164" height="10" rx="5" fill="#dc3c7c"/>
+  </g>
+
+  <!-- Animated flow -->
+  <g opacity="0.6">
+    <line class="flow-line" x1="405" y1="210" x2="595" y2="210" stroke="#a060ff" stroke-width="1.5"/>
+    <text x="405" y="206" font-family="monospace" font-size="10" fill="#6a5a8a">Form</text>
+    <text x="465" y="206" font-family="monospace" font-size="10" fill="#6a5a8a">AI</text>
+    <text x="507" y="206" font-family="monospace" font-size="10" fill="#6a5a8a">Score</text>
+    <circle cx="430" cy="210" r="3" fill="#a060ff"/>
+    <circle cx="490" cy="210" r="3" fill="#a060ff"/>
+    <circle cx="550" cy="210" r="3" fill="#22d38a"/>
+  </g>
+
+  <!-- Right divider -->
+  <line x1="625" y1="30" x2="625" y2="250" stroke="#2a1a4a" stroke-width="1"/>
+
+  <!-- Right: Stats -->
+  <g class="stat1">
+    <rect x="648" y="34" width="210" height="52" rx="8" fill="#12083a" stroke="#3a1a60" stroke-width="1"/>
+    <text x="660" y="58" font-family="monospace" font-size="28" font-weight="900" fill="#a060ff" filter="url(#glow)">190M+</text>
+    <text x="660" y="76" font-family="monospace" font-size="11" fill="#6a5a8a">unscored Indians</text>
+  </g>
+
+  <g class="stat2">
+    <rect x="648" y="98" width="210" height="52" rx="8" fill="#12083a" stroke="#3a1a60" stroke-width="1"/>
+    <text x="660" y="122" font-family="monospace" font-size="28" font-weight="900" fill="#a060ff" filter="url(#glow)">300–850</text>
+    <text x="660" y="140" font-family="monospace" font-size="11" fill="#6a5a8a">familiar score range</text>
+  </g>
+
+  <g class="stat3">
+    <rect x="648" y="162" width="100" height="52" rx="8" fill="#12083a" stroke="#3a1a60" stroke-width="1"/>
+    <text x="660" y="186" font-family="monospace" font-size="20" font-weight="900" fill="#22d38a" filter="url(#glow)">AI</text>
+    <text x="660" y="204" font-family="monospace" font-size="11" fill="#6a5a8a">powered</text>
+  </g>
+
+  <g class="stat4">
+    <rect x="758" y="162" width="100" height="52" rx="8" fill="#12083a" stroke="#3a1a60" stroke-width="1"/>
+    <text x="770" y="186" font-family="monospace" font-size="20" font-weight="900" fill="#a060ff" filter="url(#glow)">5</text>
+    <text x="770" y="204" font-family="monospace" font-size="11" fill="#6a5a8a">data signals</text>
+  </g>
+
+  <!-- Bottom strip -->
+  <rect x="0" y="258" width="900" height="22" fill="#0e0520" rx="0"/>
+  <rect x="0" y="258" width="900" height="2" fill="url(#purp)" opacity="0.6"/>
+  <text x="450" y="273" font-family="monospace" font-size="10" fill="#4a3a6a" text-anchor="middle">CIBIL sees your past • ScoreIQ sees your future</text>
+</svg>
