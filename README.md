@@ -74,7 +74,7 @@ Liabilities─┘                   ──→ 5 Improvement Tips
 - ✦ **Real-time verified data** — via Setu Account Aggregator (RBI-approved)
 
 ---
-
+![VS CIBIL](scoreiq_vs_cibil.svg)
 ## ⚙️ Tech Stack
 
 | Layer | Technology | Purpose |
