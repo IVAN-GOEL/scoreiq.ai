@@ -30,52 +30,58 @@ GEMINI_URL     = "https://generativelanguage.googleapis.com/v1beta/models/gemini
 GEMINI_WEIGHT = 1.00
 MODEL_WEIGHT  = 0.00
 
-SCORING_PROMPT = """You are an expert credit risk analyst for India. Analyse the applicant data below and return a JSON credit assessment.
+SCORING_PROMPT = """You are a STRICT senior credit risk analyst at a conservative Indian bank. Assess credit risk rigorously — no benefit of the doubt.
+
+CRITICAL: Use ONLY the self-reported form data below. IGNORE any bank statement, PDF, or transaction data entirely. Score based only on:
+- Personal profile (age, employment type, years employed)
+- Income and expenses (self-reported only)
+- Liabilities (outstanding loans, EMI burden, credit card dues)
+- Assets (declared assets and net equity)
+- Credit history (missed payments, loan count)
 
 APPLICANT DATA:
 {applicant_json}
 
-Analyse ALL factors:
-1. Income vs expenses ratio and savings capacity
-2. Debt burden: total liabilities, EMI-to-income ratio
-3. Asset quality: net worth after outstanding loans
-4. Employment stability and years employed
-5. Payment history (missed payments)
-6. Age and financial maturity
-7. Banking behaviour if available
+Be STRICT. Most applicants score 400-700. Only truly exceptional profiles exceed 750.
+Penalties: gig/self-employed = -40pts income volatility, each missed payment = -30pts, employment <2yrs = -25pts, expenses >70% income = -30pts.
 
-Return ONLY a JSON object, no markdown, no text outside JSON:
+Return ONLY valid JSON, no markdown, no text outside JSON:
 
 {{
   "score": <integer 300-850>,
   "risk_band": "<Very Low Risk|Low Risk|Moderate Risk|High Risk|Very High Risk>",
   "probability_of_default": <float 0.0-1.0>,
-  "reasoning": "<2-3 sentence plain English explanation>",
-  "key_positives": ["<positive 1>", "<positive 2>", "<positive 3>"],
-  "key_negatives": ["<negative 1>", "<negative 2>"],
-  "improvement_tips": ["<tip 1>", "<tip 2>", "<tip 3>"],
-  "factor_contributions": [
-    {{"feature": "income_expense_ratio", "value": <-0.3 to 0.3>, "label": "Income vs expenses"}},
-    {{"feature": "debt_to_income",       "value": <-0.3 to 0.3>, "label": "Debt-to-income ratio"}},
-    {{"feature": "asset_net_worth",      "value": <-0.3 to 0.3>, "label": "Net asset value"}},
-    {{"feature": "employment_stability", "value": <-0.3 to 0.3>, "label": "Employment stability"}},
-    {{"feature": "payment_history",      "value": <-0.3 to 0.3>, "label": "Payment history"}},
-    {{"feature": "liability_burden",     "value": <-0.3 to 0.3>, "label": "Total liability burden"}},
-    {{"feature": "savings_capacity",     "value": <-0.3 to 0.3>, "label": "Savings capacity"}},
-    {{"feature": "banking_behaviour",    "value": <-0.3 to 0.3>, "label": "Banking behaviour"}}
+  "reasoning": "<2-3 sentence strict honest assessment>",
+  "key_positives": ["<genuine positive 1>", "<genuine positive 2>"],
+  "key_negatives": ["<specific concern 1>", "<specific concern 2>", "<specific concern 3>"],
+  "improvement_tips": [
+    "<specific tip 1 with exact numbers/targets>",
+    "<specific tip 2 with exact numbers/targets>",
+    "<specific tip 3 with exact numbers/targets>",
+    "<specific tip 4 with exact numbers/targets>",
+    "<specific tip 5 with exact numbers/targets>"
   ],
-  "cibil_comparison": "<Would CIBIL score this person fairly? Why not?>"
+  "factor_contributions": [
+    {{"feature": "income_expense_ratio",  "value": <-0.3 to 0.3>, "label": "Income vs expenses"}},
+    {{"feature": "debt_to_income",        "value": <-0.3 to 0.3>, "label": "Debt-to-income ratio"}},
+    {{"feature": "asset_net_worth",       "value": <-0.3 to 0.3>, "label": "Net asset value"}},
+    {{"feature": "employment_stability",  "value": <-0.3 to 0.3>, "label": "Employment stability"}},
+    {{"feature": "payment_history",       "value": <-0.3 to 0.3>, "label": "Payment history"}},
+    {{"feature": "liability_burden",      "value": <-0.3 to 0.3>, "label": "Total liability burden"}},
+    {{"feature": "savings_capacity",      "value": <-0.3 to 0.3>, "label": "Savings capacity"}},
+    {{"feature": "age_profile",           "value": <-0.3 to 0.3>, "label": "Age and financial maturity"}}
+  ],
+  "cibil_comparison": "<How would CIBIL score this differently and why?>"
 }}
 
-Rules:
-- 750-850: Excellent (strong income, low debt, solid assets)
-- 670-749: Good (manageable debt, stable income)
-- 580-669: Fair (some concerns but creditworthy)
-- 500-579: High risk (significant debt or instability)
-- 300-499: Very high risk (cannot service debt)
-- Positive factor value = helps score, negative = hurts score
-- Be fair to gig workers with good cash flow — income > expenses is a strong positive
-- Someone earning 35000/month, spending 26000, zero loans should score at least 650"""
+Strict bands:
+- 780-850: Exceptional — 10+ yrs salaried, income 5x expenses, zero debt, ₹50L+ net assets
+- 700-779: Strong — stable employed, income 3x expenses, very low debt
+- 620-699: Average — decent income, manageable debt
+- 540-619: Weak — irregular income OR high debt OR short history
+- 460-539: Poor — multiple red flags
+- 300-459: Very poor — cannot service existing debt
+- improvement_tips MUST be exactly 5 items, each with a specific number or action"""
 
 
 class ClaudeScorer:
