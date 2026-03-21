@@ -1,3 +1,4 @@
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=1918B5&width=435&lines=TEAM+MARIO+AND+LUIGI+PRESENTS)](https://git.io/typing-svg)
 # <img src="banner.svg" width="100%" alt="ScoreIQ Banner"/>
 
 
@@ -250,13 +251,13 @@ ScoreIQ integrates with [Setu AA](https://setu.co) — the RBI-approved Account 
 
 ## 📄 License
 
-MIT — free to use, modify, and deploy.
+GNU — free to use, modify, and deploy.
 
 ---
 
 <div align="center">
 
-Built with ❤️ at the hackathon
+Built with ❤️ at the IEEE hackathon
 
 **CIBIL sees your past. ScoreIQ sees your future.**
 
