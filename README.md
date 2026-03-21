@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=992CF7&width=435&lines=The+five+boxing+wizards+jump+quickly)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=7F22F7&width=435&lines=Team+Mario+and+luigi+present's)](https://git.io/typing-svg)
 # <img src="banner.svg" width="100%" alt="ScoreIQ Banner"/>
 
 
