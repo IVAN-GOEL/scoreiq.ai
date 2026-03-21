@@ -461,8 +461,7 @@ Key Financial Features:
 - Mortgage Burden: ₹{features.get('mortgage_burden', 0):,.0f}
 
 Top SHAP Drivers:
-""" + "
-".join([f"- {f['label']}: {f['direction']} ({f['impact_pts']} pts)" for f in top_factors[:5]])
+""" + "\n".join([f"- {f['label']}: {f['direction']} ({f['impact_pts']} pts)" for f in top_factors[:5]])
 
     try:
         resp = _httpx.post(
