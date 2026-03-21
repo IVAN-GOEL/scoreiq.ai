@@ -156,11 +156,11 @@
     .asset-total span{color:var(--green);font-weight:500}
     /* ── AI BADGE ── */
     .ai-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:10px;background:rgba(79,127,255,0.1);border:1px solid rgba(79,127,255,0.2);color:var(--accent2);margin-bottom:12px}
-    .improvement-card{background:var(--surface);border:1px solid rgba(34,211,160,0.2);border-radius:var(--r);padding:18px;grid-column:1/-1;margin-top:4px}
-    .improvement-card h3{font-family:var(--font-d);font-size:14px;font-weight:600;margin-bottom:12px;color:var(--green)}
-    .improvement-list{list-style:none}
-    .improvement-list li{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border)}
-    .improvement-list li:last-child{border-bottom:none}
+    .improvement-card{background:var(--surface);border:1px solid rgba(79,127,255,0.2);border-radius:var(--r);padding:20px;grid-column:1/-1;margin-top:4px}
+    .improvement-card h3{font-family:var(--font-d);font-size:15px;font-weight:700;margin-bottom:16px;color:var(--accent2);display:flex;align-items:center;gap:8px}
+    .improvement-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .improvement-list li{display:flex;align-items:flex-start;gap:0;padding:10px 12px;font-size:13px;color:var(--text);background:var(--bg2);border-radius:var(--rs);border:1px solid var(--border);line-height:1.5}
+    .improvement-list li:hover{border-color:var(--accent);background:var(--accent-glow);transition:all .2s}
     @media(max-width:640px){
       nav{padding:14px 18px}
       .hero,.personas,.form-page,.score-page{padding-left:18px;padding-right:18px}
@@ -767,6 +767,34 @@ function renderScore() {
     drawExplanation(d.explanation, d.shap_values);
     document.getElementById('pd-badge').textContent =
       'Default probability: ' + (d.probability_of_default * 100).toFixed(1) + '%';
+
+    // ── 5 Improvement Tips from Gemini ──
+    const tips      = d.improvement_tips || [];
+    const negatives = d.key_negatives    || [];
+    const tipCard   = document.getElementById('improvement-card');
+    const tipList   = document.getElementById('improvement-list');
+    if (tipCard) {
+      tipCard.style.display = 'block';
+      const tipItems = tips.length > 0 ? tips : negatives;
+      if (tipItems.length > 0) {
+        tipList.innerHTML = tipItems.map((t, i) =>
+          '<li>' +
+            '<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;min-width:24px;border-radius:50%;background:var(--accent-glow);border:1px solid rgba(79,127,255,0.3);color:var(--accent2);font-size:11px;font-weight:700;margin-right:12px">' + (i+1) + '</span>' +
+            '<span style="line-height:1.5">' + t + '</span>' +
+          '</li>'
+        ).join('');
+      } else {
+        tipList.innerHTML = '<li><span>Maintain your current financial habits to sustain your score.</span></li>';
+      }
+    }
+
+    // ── AI source badge ──
+    const srcRow = document.getElementById('data-sources-row');
+    const aiTag  = d.ai_score ? '<span class="ai-badge">&#9889; Gemini AI: ' + d.ai_score + '</span> ' : (d.source === 'gemini_blended' ? '<span class="ai-badge">&#9889; Gemini AI</span> ' : '');
+    srcRow.innerHTML = aiTag + '<span class="datasrc-badge">&#10003; Form data</span>' +
+      (state.pdfUsed  ? '<span class="datasrc-badge">&#10003; Bank PDF (excluded from scoring)</span>' : '') +
+      (state.bankData && !state.pdfUsed ? '<span class="datasrc-badge">&#10003; Setu AA</span>' : '');
+
   }, 100);
 }
 
