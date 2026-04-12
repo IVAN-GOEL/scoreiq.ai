@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-scoreiqv2web.vercel.app-7c3cdc?style=for-the-badge)](https://scoreiqv2web.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-scoreiqv2web.vercel.app-7c3cdc?style=for-the-badge)](https://scoreiqv2.netlify.app/)
 [![Backend](https://img.shields.io/badge/Backend-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://scoreiqai-production.up.railway.app)
 [![License](https://img.shields.io/badge/License-MIT-a060ff?style=for-the-badge)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
