@@ -253,17 +253,6 @@ ScoreIQ integrates with [Setu AA](https://setu.co) — the RBI-approved Account 
 
 GNU — free to use, modify, and deploy.
 
----
-
-<div align="center">
-
-
-Built with ❤️ at the IEEE hackathon
-
-**CIBIL sees your past. ScoreIQ sees your future.**
-
-</div>
----
 
 <div align="center">
 
