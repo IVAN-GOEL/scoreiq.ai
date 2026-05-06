@@ -274,15 +274,13 @@ Built with ❤️ at the IEEE hackathon
 
 </div>
 
+
 ---
 
 ## 👥 Contributors
 
 <div align="center">
 
-| | |
-|:---:|:---:|
-| [![panda-tronic](https://github.com/panda-tronic.png?size=80)](https://github.com/panda-tronic) | [![IVAN-GOEL](https://github.com/IVAN-GOEL.png?size=80)](https://github.com/IVAN-GOEL) |
-| [panda-tronic](https://github.com/panda-tronic) | [IVAN-GOEL](https://github.com/IVAN-GOEL) |
+[panda-tronic](https://github.com/panda-tronic) · [IVAN-GOEL](https://github.com/IVAN-GOEL)
 
 </div>
