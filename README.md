@@ -256,6 +256,10 @@ GNU — free to use, modify, and deploy.
 ---
 
 <div align="center">
+## Contributors:
+  panda-tronic
+  IVAN-GOEL
+<div align="center">
 
 Built with ❤️ at the IEEE hackathon
 
